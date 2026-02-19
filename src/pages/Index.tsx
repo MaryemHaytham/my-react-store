@@ -1,5 +1,4 @@
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+// removed unused imports (useTranslation, motion) to fix build warnings
 import { Layout } from '@/components/layout/Layout';
 import { HeroSection } from '@/components/home/HeroSection';
 import { FeaturedProducts } from '@/components/home/FeaturedProducts';

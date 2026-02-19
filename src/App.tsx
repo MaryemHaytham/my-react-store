@@ -1,4 +1,6 @@
 import { Suspense, lazy } from "react";
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +11,29 @@ import { WishlistProvider } from "@/contexts/WishlistContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import "@/lib/i18n";
+
+// Local loading UI component used in Suspense fallback.
+function LoadingFallbackInner() {
+  // Hooks are safe here because the fallback is rendered inside LanguageProvider
+  const { t } = useTranslation();
+  const { direction } = useLanguage();
+
+  return (
+    <div className={`flex flex-col items-center justify-center gap-4 p-6 ${direction === 'rtl' ? 'text-right' : 'text-left'}`}>
+      <div className="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin" />
+      <div className="text-lg font-medium">{t('common.loading')}</div>
+    </div>
+  );
+}
+
+// Wrapper to preserve original min-height + centering
+function LoadingFallback() {
+  return (
+    <div className="min-h-[40vh] grid place-items-center">
+      <LoadingFallbackInner />
+    </div>
+  );
+}
 
 const Index = lazy(() => import("./pages/Index"));
 const Products = lazy(() => import("./pages/Products"));
@@ -31,7 +56,7 @@ const App = () => (
               <Sonner />
               <BrowserRouter>
                 {/* Suspense provides a fallback while lazy chunks load */}
-                <Suspense fallback={<div className="min-h-[40vh] grid place-items-center">Loading…</div>}>
+                <Suspense fallback={<LoadingFallback />}>
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/products" element={<Products />} />

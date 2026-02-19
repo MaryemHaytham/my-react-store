@@ -16,7 +16,8 @@ import {
 import { Layout } from '@/components/layout/Layout';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductFilters } from '@/components/products/ProductFilters';
-import { products, Product } from '@/data/products';
+import { products } from '@/data/products';
+import type { Product } from '@/data/products';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 type SortOption = 'featured' | 'price-low' | 'price-high' | 'rating' | 'newest';
