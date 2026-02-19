@@ -41,8 +41,19 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-6">
             <Link to="/" className="inline-block">
               <span className="font-bold text-2xl">
-                <span className="text-gradient">MY</span>
-                <span className="text-foreground">STORE</span>
+                {(() => {
+                  const brand = t('brand.full');
+                  const parts = brand ? brand.split(' ') : ['MY', 'STORE'];
+                  if (parts.length > 1) {
+                    return (
+                      <>
+                        <span className="text-gradient">{parts.slice(0, 1).join(' ')}</span>
+                        <span className="text-foreground">{parts.slice(1).join(' ')}</span>
+                      </>
+                    );
+                  }
+                  return <span className="text-gradient">{brand}</span>;
+                })()}
               </span>
             </Link>
             

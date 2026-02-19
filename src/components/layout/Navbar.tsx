@@ -85,12 +85,23 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="flex items-center gap-2 font-bold text-xl md:text-2xl"
         >
-          <span className="text-gradient">MY</span>
-          <span className="text-foreground">STORE</span>
+          {(() => {
+            const brand = t('brand.full');
+            const parts = brand ? brand.split(' ') : ['MY', 'STORE'];
+            if (parts.length > 1) {
+              return (
+                <>
+                  <span className="text-gradient">{parts.slice(0, 1).join(' ')}</span>
+                  <span className="text-foreground">{parts.slice(1).join(' ')}</span>
+                </>
+              );
+            }
+            return <span className="text-gradient">{brand}</span>;
+          })()}
         </Link>
 
         {/* Desktop Navigation */}

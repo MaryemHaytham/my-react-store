@@ -13,6 +13,10 @@ const resources = {
         search: 'Search products...',
         checkout: 'Checkout',
       },
+      // Brand
+      brand: {
+        full: 'MY STORE',
+      },
       // Hero Section
       hero: {
         title: 'Discover Premium Collection',
@@ -189,6 +193,10 @@ const resources = {
         wishlist: 'المفضلة',
         search: 'البحث عن منتجات...',
         checkout: 'الدفع',
+      },
+      // Brand
+      brand: {
+        full: 'متجري',
       },
       // Hero Section
       hero: {
