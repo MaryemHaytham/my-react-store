@@ -164,11 +164,11 @@ export default function ProductsPage() {
                     <SelectValue placeholder={t('products.sort')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="featured">Featured</SelectItem>
-                    <SelectItem value="newest">Newest</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
-                    <SelectItem value="rating">Highest Rated</SelectItem>
+                    <SelectItem value="featured">{t('products.sortOptions.featured')}</SelectItem>
+                    <SelectItem value="newest">{t('products.sortOptions.newest')}</SelectItem>
+                    <SelectItem value="price-low">{t('products.sortOptions.priceLow')}</SelectItem>
+                    <SelectItem value="price-high">{t('products.sortOptions.priceHigh')}</SelectItem>
+                    <SelectItem value="rating">{t('products.sortOptions.rating')}</SelectItem>
                   </SelectContent>
                 </Select>
 
