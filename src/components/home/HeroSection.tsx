@@ -3,8 +3,30 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Hero3DScene } from '@/components/3d/Hero3DScene';
 import { useLanguage } from '@/contexts/LanguageContext';
+import React, { lazy, Suspense } from 'react';
+
+// Lazy-load the heavy 3D scene so it doesn't block initial render
+const Hero3DScene = lazy(() => import('@/components/3d/Hero3DScene'));
+
+// Small error boundary to prevent the whole page from crashing if 3D code throws
+class SceneErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null; // swallow and let page render without 3D
+    }
+    return this.props.children as React.ReactElement;
+  }
+}
 
 export function HeroSection() {
   const { t } = useTranslation();
@@ -12,8 +34,19 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
-      {/* 3D Background */}
-      <Hero3DScene />
+      {/* 3D Background (lazy-loaded) */}
+      <SceneErrorBoundary>
+        <Suspense
+          fallback={
+            <div className="absolute inset-0 flex items-center justify-center">
+              {/* lightweight placeholder so the layout remains stable */}
+              <div className="w-16 h-16 rounded-full border-4 border-primary border-t-transparent animate-spin" />
+            </div>
+          }
+        >
+          <Hero3DScene />
+        </Suspense>
+      </SceneErrorBoundary>
 
       {/* Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background pointer-events-none z-10" />
