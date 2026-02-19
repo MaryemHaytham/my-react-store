@@ -1,0 +1,261 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3D E-commerce Design System - Luxury Modern Theme */
+
+@layer base {
+  :root {
+    /* Core Colors - Warm Neutral Luxury */
+    --background: 40 20% 98%;
+    --foreground: 30 10% 10%;
+    
+    --card: 40 15% 97%;
+    --card-foreground: 30 10% 10%;
+    
+    --popover: 40 15% 97%;
+    --popover-foreground: 30 10% 10%;
+    
+    /* Gold/Amber Accent - Luxury E-commerce */
+    --primary: 38 92% 50%;
+    --primary-foreground: 30 10% 5%;
+    
+    --secondary: 35 20% 93%;
+    --secondary-foreground: 30 10% 20%;
+    
+    --muted: 35 15% 92%;
+    --muted-foreground: 30 10% 45%;
+    
+    --accent: 38 85% 55%;
+    --accent-foreground: 30 10% 5%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 38 92% 50%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom E-commerce Tokens */
+    --hero-gradient-start: 38 92% 50%;
+    --hero-gradient-end: 25 95% 53%;
+    --glass: 40 20% 98% / 0.8;
+    --glass-border: 40 20% 88% / 0.5;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(30 10% 10% / 0.05);
+    --shadow-md: 0 4px 12px hsl(30 10% 10% / 0.08);
+    --shadow-lg: 0 12px 40px hsl(30 10% 10% / 0.12);
+    --shadow-glow: 0 0 60px hsl(38 92% 50% / 0.3);
+    
+    /* Sidebar */
+    --sidebar-background: 40 15% 97%;
+    --sidebar-foreground: 30 10% 10%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 30 10% 5%;
+    --sidebar-accent: 35 20% 93%;
+    --sidebar-accent-foreground: 30 10% 20%;
+    --sidebar-border: 35 20% 88%;
+    --sidebar-ring: 38 92% 50%;
+  }
+
+  .dark {
+    --background: 25 15% 8%;
+    --foreground: 40 15% 95%;
+    
+    --card: 25 15% 10%;
+    --card-foreground: 40 15% 95%;
+    
+    --popover: 25 15% 10%;
+    --popover-foreground: 40 15% 95%;
+    
+    --primary: 38 92% 55%;
+    --primary-foreground: 25 15% 5%;
+    
+    --secondary: 25 12% 15%;
+    --secondary-foreground: 40 15% 90%;
+    
+    --muted: 25 12% 18%;
+    --muted-foreground: 40 10% 55%;
+    
+    --accent: 38 85% 60%;
+    --accent-foreground: 25 15% 5%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 25 12% 18%;
+    --input: 25 12% 18%;
+    --ring: 38 92% 55%;
+    
+    /* Custom E-commerce Tokens - Dark */
+    --hero-gradient-start: 38 92% 55%;
+    --hero-gradient-end: 25 95% 58%;
+    --glass: 25 15% 12% / 0.9;
+    --glass-border: 25 12% 25% / 0.5;
+    
+    /* Shadows - Dark */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 80px hsl(38 92% 55% / 0.25);
+    
+    /* Sidebar - Dark */
+    --sidebar-background: 25 15% 10%;
+    --sidebar-foreground: 40 15% 95%;
+    --sidebar-primary: 38 92% 55%;
+    --sidebar-primary-foreground: 25 15% 5%;
+    --sidebar-accent: 25 12% 15%;
+    --sidebar-accent-foreground: 40 15% 90%;
+    --sidebar-border: 25 12% 18%;
+    --sidebar-ring: 38 92% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* RTL Support */
+  [dir="rtl"] {
+    font-family: 'IBM Plex Sans Arabic', 'Inter', system-ui, sans-serif;
+  }
+  
+  [dir="ltr"] {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    @apply backdrop-blur-xl border;
+    background: hsl(var(--glass));
+    border-color: hsl(var(--glass-border));
+  }
+  
+  /* Hero Gradient */
+  .hero-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--hero-gradient-start)) 0%,
+      hsl(var(--hero-gradient-end)) 100%
+    );
+  }
+  
+  /* Glow Effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Product Card Hover */
+  .product-card {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .product-card:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--hero-gradient-start)) 0%,
+      hsl(var(--hero-gradient-end)) 100%
+    );
+  }
+  
+  /* Smooth Transitions */
+  .transition-theme {
+    @apply transition-colors duration-300 ease-out;
+  }
+  
+  /* 3D Canvas Container */
+  .canvas-container {
+    @apply w-full h-full;
+  }
+  
+  .canvas-container canvas {
+    @apply touch-none pointer-events-none;
+  }
+}
+
+@layer utilities {
+  /* RTL Utilities */
+  .flip-rtl {
+    @apply rtl:scale-x-[-1];
+  }
+  
+  /* Animation Utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateY(10deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: var(--shadow-glow);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 100px hsl(38 92% 50% / 0.5);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+

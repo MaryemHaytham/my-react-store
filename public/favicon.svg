@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="128" height="128" role="img" aria-label="Gold shopping cart favicon">
+  <rect width="100%" height="100%" fill="transparent"/>
+  <!-- Cart body -->
+  <path d="M12 16h6l6 24h22l6-18H22" fill="#D4AF37" stroke="#A77C18" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Handle -->
+  <path d="M10 16l4 0" stroke="#A77C18" stroke-width="3" stroke-linecap="round"/>
+  <!-- Wheels -->
+  <circle cx="28" cy="48" r="4" fill="#A77C18"/>
+  <circle cx="48" cy="48" r="4" fill="#A77C18"/>
+  <!-- Shimmer highlight -->
+  <path d="M18 20c4-2 10-3 18 0" stroke="#FFE29A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>
