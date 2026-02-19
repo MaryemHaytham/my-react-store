@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Search, Grid, LayoutGrid, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import {
   Select,
   SelectContent,
@@ -17,14 +16,11 @@ import { Layout } from '@/components/layout/Layout';
 import { ProductCard } from '@/components/products/ProductCard';
 import { ProductFilters } from '@/components/products/ProductFilters';
 import { products } from '@/data/products';
-import type { Product } from '@/data/products';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 type SortOption = 'featured' | 'price-low' | 'price-high' | 'rating' | 'newest';
 
 export default function ProductsPage() {
   const { t } = useTranslation();
-  const { language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');

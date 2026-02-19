@@ -24,7 +24,7 @@ type Step = 'shipping' | 'payment' | 'review';
 
 export default function Checkout() {
   const { t } = useTranslation();
-  const { language, direction } = useLanguage();
+  const { direction } = useLanguage();
   const navigate = useNavigate();
   const { state, clearCart } = useCart();
   

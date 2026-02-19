@@ -11,8 +11,8 @@ import { cn } from '@/lib/utils';
 
 export default function Cart() {
   const { t } = useTranslation();
-  const { language, direction } = useLanguage();
-  const { state, removeItem, updateQuantity, clearCart } = useCart();
+  const {  direction } = useLanguage();
+  const { state, removeItem, updateQuantity} = useCart();
 
   const subtotal = state.total;
   const shipping = subtotal > 100 ? 0 : 9.99;

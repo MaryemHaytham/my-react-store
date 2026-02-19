@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
 import { Layout } from '@/components/layout/Layout';
 import { ProductViewer3D } from '@/components/3d/ProductViewer3D';
@@ -57,7 +56,6 @@ export default function ProductDetail() {
   }
 
   const name = language === 'ar' ? product.nameAr : product.name;
-  const description = language === 'ar' ? product.descriptionAr : product.description;
   const inCart = isInCart(product.id);
   const inWishlist = isInWishlist(product.id);
 
